@@ -1,106 +1,93 @@
-# Description:
-#   Example scripts for you to examine and try out.
+# // # // Description:
+# // # //
+# // # //
+# // # // Dependencies:
+# // # //   None
+# // # //
+# // # // Configuration:
+# // # //   None
+# // # //
+# // # // Commands:
+# // # //
+# //
 #
-# Notes:
-#   They are commented out by default, because most of them are pretty silly and
-#   wouldn't be useful and amusing enough for day to day huboting.
-#   Uncomment the ones you want to try and experiment with.
+# // #
+# // #  function parse() {
+# // #    robot.http("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=ALL&key=Q9B4-PHEQ-9AZT-DWE9&json=y").get()(function(err, res, body) {
+# // #      console.log(err);
+# // #      console.log(res);
+# // #      console.log(body);
+# // #    });
+# // #  }
+# // #
+# // # parse()
+
+
+
+
 #
-#   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
+# module.exports = function(robot) {
+
 
 module.exports = (robot) ->
+  # your code here
+   # // YOUR CODE HERE
 
-  # robot.hear /badger/i, (res) ->
-  #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
-  #
-  # robot.respond /open the (.*) doors/i, (res) ->
-  #   doorType = res.match[1]
-  #   if doorType is "pod bay"
-  #     res.reply "I'm afraid I can't let you do that."
-  #   else
-  #     res.reply "Opening #{doorType} doors"
-  #
-  # robot.hear /I like pie/i, (res) ->
-  #   res.emote "makes a freshly baked pie"
-  #
-  # lulz = ['lol', 'rofl', 'lmao']
-  #
-  # robot.respond /lulz/i, (res) ->
-  #   res.send res.random lulz
-  #
-  # robot.topic (res) ->
-  #   res.send "#{res.message.text}? That's a Paddlin'"
-  #
-  #
-  # enterReplies = ['Hi', 'Target Acquired', 'Firing', 'Hello friend.', 'Gotcha', 'I see you']
-  # leaveReplies = ['Are you still there?', 'Target lost', 'Searching']
-  #
-  # robot.enter (res) ->
-  #   res.send res.random enterReplies
-  # robot.leave (res) ->
-  #   res.send res.random leaveReplies
-  #
-  # answer = process.env.HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING
-  #
-  # robot.respond /what is the answer to the ultimate question of life/, (res) ->
-  #   unless answer?
-  #     res.send "Missing HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING in environment: please set and try again"
-  #     return
-  #   res.send "#{answer}, but what is the question?"
-  #
-  # robot.respond /you are a little slow/, (res) ->
-  #   setTimeout () ->
-  #     res.send "Who you calling 'slow'?"
-  #   , 60 * 1000
-  #
-  # annoyIntervalId = null
-  #
-  # robot.respond /annoy me/, (res) ->
-  #   if annoyIntervalId
-  #     res.send "AAAAAAAAAAAEEEEEEEEEEEEEEEEEEEEEEEEIIIIIIIIHHHHHHHHHH"
-  #     return
-  #
-  #   res.send "Hey, want to hear the most annoying sound in the world?"
-  #   annoyIntervalId = setInterval () ->
-  #     res.send "AAAAAAAAAAAEEEEEEEEEEEEEEEEEEEEEEEEIIIIIIIIHHHHHHHHHH"
-  #   , 1000
-  #
-  # robot.respond /unannoy me/, (res) ->
-  #   if annoyIntervalId
-  #     res.send "GUYS, GUYS, GUYS!"
-  #     clearInterval(annoyIntervalId)
-  #     annoyIntervalId = null
-  #   else
-  #     res.send "Not annoying you right now, am I?"
-  #
-  #
-  # robot.router.post '/hubot/chatsecrets/:room', (req, res) ->
-  #   room   = req.params.room
-  #   data   = JSON.parse req.body.payload
-  #   secret = data.secret
-  #
-  #   robot.messageRoom room, "I have a secret: #{secret}"
-  #
-  #   res.send 'OK'
-  #
-  # robot.error (err, res) ->
-  #   robot.logger.error "DOES NOT COMPUTE"
-  #
-  #   if res?
-  #     res.reply "DOES NOT COMPUTE"
-  #
-  # robot.respond /have a soda/i, (res) ->
-  #   # Get number of sodas had (coerced to a number).
-  #   sodasHad = robot.brain.get('totalSodas') * 1 or 0
-  #
-  #   if sodasHad > 4
-  #     res.reply "I'm too fizzy.."
-  #
-  #   else
-  #     res.reply 'Sure!'
-  #
-  #     robot.brain.set 'totalSodas', sodasHad+1
-  #
-  # robot.respond /sleep it off/i, (res) ->
-  #   robot.brain.set 'totalSodas', 0
-  #   res.reply 'zzzzz'
+
+#
+#    (function() {
+#   robot.http("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=ALL&key=Q9B4-PHEQ-9AZT-DWE9&json=y").get()(function(err, res, body) {});
+#
+# }).call(this);
+#
+#    // function parse() {
+#    //   robot.http("http://api.bart/gove/api/etd.aspx?cmd=etd&orig=ALL&key=Q9B4-PHEQ-9AZT-DWE9&json=y").get()(function(err, res, body) {
+#    //     console.log(err);
+#    //     console.log(res);
+#    //     console.log(body);
+#    //   })
+#    // };
+#    //
+#    // parse()
+
+
+  robot.http("http://api.bart/gove/api/etd.aspx?cmd=etd&orig=ALL&key=Q9B4-PHEQ-9AZT-DWE9&json=y")
+    .header('Accept', 'application/json')
+    .get() (err, res, body) ->
+      # error checking code here
+
+
+
+
+      data = JSON.parse body
+      # res.send "#{data.passenger} taking midnight train going #{data.destination}"
+      robot.hear /badger/i, (res) ->
+        res.send "#{data.root.time} taking midnight train going "
+
+    # robot.hear(/javascript/i, function(msg) {
+    #   return msg.send("I love writing code!");
+    # });
+# }
+
+# /************************************
+#
+# EXAMPLES OF THE KEY HUBOT FUNCTIONS
+#
+# ************************************/
+#
+# /* Variables for random example */
+#
+# // const squirrels = ["http://img.skitch.com/20100714-d6q52xajfh4cimxr3888yb77ru.jpg", "https://img.skitch.com/20111026-r2wsngtu4jftwxmsytdke6arwd.png", "http://cl.ly/1i0s1r3t2s2G3P1N3t3M/Screen_Shot_2011-10-27_at_9.36.45_AM.png", "http://shipitsquirrel.github.com/images/squirrel.png"];
+#
+# // module.exports = function(robot) {
+# //   /* Basic example of respond / send. If the user enters hi or hello the bot responds "Howdy!" */
+# //   return robot.respond(/hi|hello/i, function(msg) {
+# //     return msg.send("Howdy!");
+# //   });
+#
+# //   /* Random Example
+# //   If a user enters 'ship it' we return a random squirrel, which is popular for symbolizing shipping something with engineers */
+# //   return robot.hear(/ship it/i, function(msg) {
+# //     return msg.send(msg.random(squirrels));
+# //   });
+# // };
