@@ -62,7 +62,7 @@ module.exports = (robot) ->
       data = JSON.parse body
       # res.send "#{data.passenger} taking midnight train going #{data.destination}"
       robot.hear /badger/i, (res) ->
-        res.send "#{data.root.time} taking midnight train going "
+        res.send "hi"
 
     # robot.hear(/javascript/i, function(msg) {
     #   return msg.send("I love writing code!");
