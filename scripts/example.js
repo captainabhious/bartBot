@@ -80,6 +80,7 @@ return msg.send("Which station's departure would you like?\n" + stationNames)
 
   robot.hear(/Montgomery/i, function(msg){
 
+
   fetch('http://api.bart.gov/api/etd.aspx?cmd=etd&orig=mont&key=MW9S-E7SL-26DU-VV8V&json=y')
     .then(
       function(response) {
