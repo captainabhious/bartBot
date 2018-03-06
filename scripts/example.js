@@ -18,7 +18,7 @@ robot.hear(/is it the weekend/i, function(msg){
 
 robot.hear(/what day is it/i, function(msg){
     var today = new Date();
-    var dayOfTheWeek = today.getDay();
+    var dayOfTheWeek = today.getUTCDay();
 
     switch (dayOfTheWeek) {
       case 0:
@@ -40,19 +40,19 @@ robot.hear(/what day is it/i, function(msg){
 });
 
 // brain
-robot.respond/+productive/i, function(msg){
-
-
-
-  var start = Date.now()
-  var end = Date.now()
-
-  var seconds = (end - start) / 1000
-  var elapsedSeconds = Math.floor(seconds)
-
-
-
-}
+// robot.respond/+productive/i, function(msg){
+//
+//
+//
+//   var start = Date.now()
+//   var end = Date.now()
+//
+//   var seconds = (end - start) / 1000
+//   var elapsedSeconds = Math.floor(seconds)
+//
+//
+//
+// }
 
 
  }
