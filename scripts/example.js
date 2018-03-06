@@ -1,4 +1,6 @@
 
+const fetch = require('node-fetch')
+const _ = require('underscore')
 
 module.exports = function(robot) {
 
@@ -38,6 +40,72 @@ robot.hear(/what day is it/i, function(msg){
     }
 
 });
+
+robot.hear(/bart/i, function(msg){
+
+
+const stations = [
+{"key":"Montgomery St.","value":"mont"},
+{"key":"North Berkeley","value":"nbrk"},
+{"key":"North Concord/Martinez","value":"ncon"},
+{"key":"Oakland Int'l Airport","value":"oakl"},
+{"key":"Orinda","value":"orin"},
+{"key":"Pittsburg/Bay Point","value":"pitt"},
+{"key":"Pleasant Hill","value":"phil"},
+{"key":"Powell St.","value":"powl"},
+{"key":"Richmond","value":"rich"},
+{"key":"Rockridge","value":"rock"},
+{"key":"San Bruno","value":"sbrn"},
+{"key":"San Francisco Int'l Airport","value":"sfia"},
+{"key":"San Leandro","value":"sanl"},
+{"key":"South Hayward","value":"shay"},
+{"key":"South San Francisco","value":"ssan"},
+{"key":"Union City","value":"ucty"},
+{"key":"Warm Springs/South Fremont","value":"warm"},
+{"key":"Walnut Creek","value":"wcrk"},
+{"key":"West Dublin","value":"wdub"},
+{"key":"West Oakland","value":"woak"}]
+
+var stationNames = _.map(stations,"key")
+
+return msg.send("Which station's departure would you like?\n" + stationNames)
+
+
+
+  });
+
+
+
+
+
+  robot.hear(/Montgomery/i, function(msg){
+
+  fetch('http://api.bart.gov/api/etd.aspx?cmd=etd&orig=mont&key=MW9S-E7SL-26DU-VV8V&json=y')
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+
+        // Examine the text in the response
+        response.json().then(function(data) {
+          console.log(data);
+
+          var next = data.root.station[0].etd
+          console.log(next);
+          return msg.send("here you go" + next);
+        });
+      }
+    )
+    .catch(function(err) {
+      console.log('Fetch Error :-S', err);
+    });
+
+
+      });
+
 
 // brain
 // robot.respond/+productive/i, function(msg){
