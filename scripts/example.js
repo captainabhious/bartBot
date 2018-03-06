@@ -18,7 +18,7 @@ robot.hear(/is it the weekend/i, function(msg){
 
 robot.hear(/what day is it/i, function(msg){
     var today = new Date();
-    var dayOfTheWeek = today.getUTCDay();
+    var dayOfTheWeek = today.getDay();
 
     switch (dayOfTheWeek) {
       case 0:
