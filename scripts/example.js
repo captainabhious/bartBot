@@ -18,13 +18,13 @@ robot.hear(/is it the weekend/i, function(msg){
 
 robot.hear(/what day is it/i, function(msg){
     var today = new Date();
-    var dayOfTheWeek = today.getDay();
+    var dayOfTheWeek = today.getUTCDay();
 
     switch (dayOfTheWeek) {
       case 0:
       return msg.send("SUNDAY 🌞");
       case 1:
-      return msg.send("Sorry, it's only MONDAY");
+      return msg.send("It's only MONDAY, long week ahead.");
       case 2:
       return msg.send("TUESDAY!");
       case 3:
@@ -38,6 +38,21 @@ robot.hear(/what day is it/i, function(msg){
     }
 
 });
+
+// brain
+robot.respond/+productive/i, function(msg){
+
+
+
+  var start = Date.now()
+  var end = Date.now()
+
+  var seconds = (end - start) / 1000
+  var elapsedSeconds = Math.floor(seconds)
+
+
+
+}
 
 
  }
